@@ -6,5 +6,6 @@ User = get_user_model()
 
 async def index(request):
     user = await User.objects.afirst()
-    1 / 0
-    return HttpResponse(f"Hello, {user.username}!")
+    if user:
+        return HttpResponse(f"Hello, {user.username}!")
+    return HttpResponse("Hello!")
